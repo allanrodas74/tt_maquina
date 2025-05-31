@@ -23,13 +23,13 @@ project:
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
 pinout:
-  ui[0]: "ena"
-  ui[1]: "D"
-  ui[2]: "N"
-  ui[3]: "R"
-  ui[4]: "P"
-  ui[5]: "rst_n"
-  ui[6]: "clk"
+  ui[0]: "clk"     # o en otra posición que quieras
+  ui[1]: "rst_n"
+  ui[2]: "ena"
+  ui[3]: "D"
+  ui[4]: "N"
+  ui[5]: "R"
+  ui[6]: "P"
   ui[7]: ""
 
   uo[0]: "D1"
@@ -40,7 +40,6 @@ pinout:
   uo[5]: "N1"
   uo[6]: "R1"
   uo[7]: ""
-
 
   # Bidirectional pins
   uio[0]: ""
