@@ -8,7 +8,7 @@ module tt_user_module (
     wire [3:0] sw = io_in[3:0];   // P,R,N,D
     wire [6:0] led;
 
-    Maquina_Top top (
+   tt_Maquina_Top top (
         .clk   (clk),
         .reset (rst),
         .sw    (sw),
