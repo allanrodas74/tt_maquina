@@ -4,26 +4,27 @@ module tt_um_allanrodas74 (
     output wire [7:0] uo_out,
     inout  wire [7:0] uio_inout,
     input  wire       ena,
-    input  wire       clk,
-    input  wire       rst_n
+    input  wire       clk,     // reloj global Tiny Tapeout
+    input  wire       rst_n    // reset global
 );
-
-    // Entradas específicas del proyecto (P, R, N, D desde ui_in)
+    // P, R, N, D conectados a ui_in[6:3]
     wire [3:0] sw = ui_in[6:3];
 
-    // Salidas LED uo_out[6:0]
+    // Salida de los LEDs
     wire [6:0] led;
 
-    // Instancia de tu módulo
+    // Instancia del módulo superior de tu diseño
     tt_Maquina_Top top (
         .clk   (clk),
-        .reset (~rst_n),  // Invertimos rst_n porque tu módulo espera reset activo alto
+        .reset (~rst_n),  // Se invierte porque rst_n es activo bajo
         .sw    (sw),
         .led   (led)
     );
 
-    // Asignación de salidas
-    assign uo_out = {1'b0, led};  // El bit 7 se pone en 0
-    assign uio_inout = 8'bz;      // No se usan IO bidireccionales
+    // Asignación a las salidas del diseño
+    assign uo_out = {1'b0, led};   // Bit 7 a 0, leds en bits [6:0]
+
+    // Los IO bidireccionales no se usan, así que se dejan en alta impedancia
+    assign uio_inout = 8'bz;
 
 endmodule
