@@ -1,22 +1,29 @@
 // Interfaz obligatoria de Tiny Tapeout
 module tt_um_allanrodas74 (
-   input  wire [7:0] ui_in,
+    input  wire [7:0] ui_in,
     output wire [7:0] uo_out,
     inout  wire [7:0] uio_inout,
-    input wire ena,
-    input  wire       clk,     // reloj global Tiny Tapeout
-    input  wire       rst_n      // reset global
+    input  wire       ena,
+    input  wire       clk,
+    input  wire       rst_n
 );
-    wire [3:0] sw = io_in[3:0];   // P,R,N,D
+
+    // Entradas específicas del proyecto (P, R, N, D desde ui_in)
+    wire [3:0] sw = ui_in[6:3];
+
+    // Salidas LED uo_out[6:0]
     wire [6:0] led;
 
-   tt_Maquina_Top top (
+    // Instancia de tu módulo
+    tt_Maquina_Top top (
         .clk   (clk),
-        .reset (~rst_n),
+        .reset (~rst_n),  // Invertimos rst_n porque tu módulo espera reset activo alto
         .sw    (sw),
         .led   (led)
     );
 
-  assign io_out = {1'b0, led};  // io_out[7] = 0, io_out[6:0] = led[6:0]
+    // Asignación de salidas
+    assign uo_out = {1'b0, led};  // El bit 7 se pone en 0
+    assign uio_inout = 8'bz;      // No se usan IO bidireccionales
 
 endmodule
