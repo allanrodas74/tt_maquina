@@ -1,11 +1,14 @@
 module tt_um_allanrodas74 (
-    input  wire [7:0] ui_in,    // Entradas (ui[0] a ui[7])
-    output wire [7:0] uo_out,   // Salidas (uo[0] a uo[7])
-    inout  wire [7:0] uio_inout,// Entradas/Salidas (uio[0] a uio[7])
+    input  wire [7:0] ui_in,     // Entradas
+    output wire [7:0] uo_out,    // Salidas
+    input  wire [7:0] uio_in,    // Entradas (no usadas)
+    output wire [7:0] uio_out,   // Salidas (no usadas)
+    output wire [7:0] uio_oe,    // Output enable (no usado)
     input  wire ena,
     input  wire clk,
     input  wire rst_n
 );
+
 
     // Según tu pinout:
     // ui[3]: P
@@ -35,6 +38,9 @@ module tt_um_allanrodas74 (
 
     // No usamos uio_inout, se deja en alta impedancia
     assign uio_inout = 8'bz;
+    assign uio_out = 8'b0;
+assign uio_oe  = 8'b0;
+
 
 endmodule
 
