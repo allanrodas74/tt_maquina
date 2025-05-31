@@ -11,7 +11,7 @@ module tt_um_allanrodas74 (
 
    tt_Maquina_Top top (
         .clk   (clk),
-        .reset (rst),
+        .reset (~rst_n),
         .sw    (sw),
         .led   (led)
     );
