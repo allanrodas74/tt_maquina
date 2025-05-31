@@ -15,14 +15,17 @@ module tt_Maquina_Top(
     wire P1, N1, R1;
     wire M0, M1;
 
-    Maquina fsm (
-        .clk  (clk),
-        .reset(reset),
-        .D(D), .N(N), .R(R), .P(P),
-        .D1(D1), .D2(D2), .D3(D3), .D4(D4),
-        .P1(P1), .N1(N1), .R1(R1),
-        .M0(M0), .M1(M1)           // M0/M1 expuestos por si los necesitas
-    );
+   wire unused_M0, unused_M1;
+
+Maquina fsm (
+    .clk  (clk),
+    .reset(reset),
+    .D(D), .N(N), .R(R), .P(P),
+    .D1(D1), .D2(D2), .D3(D3), .D4(D4),
+    .P1(P1), .N1(N1), .R1(R1),
+    .M0(unused_M0), .M1(unused_M1)
+);
+
 
     assign led = {R1, N1, P1, D4, D3, D2, D1};
 endmodule
