@@ -1,5 +1,5 @@
 // Interfaz obligatoria de Tiny Tapeout
-module tt_user_module (
+module tt_um_allanrodas74 (
     input  wire [7:0] io_in,   // io_in[3:0] = {P,R,N,D}
     output wire [7:0] io_out,  // io_out[6:0] = {R1,N1,P1,D4,D3,D2,D1}
     input  wire       clk,     // reloj global Tiny Tapeout
