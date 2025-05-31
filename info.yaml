@@ -23,11 +23,11 @@ project:
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
 pinout:
-  ui[0]: "D"
-  ui[1]: "N"
-  ui[2]: "R"
-  ui[3]: "P"
-  ui[4]: ""
+  ui[0]: "ena"
+  ui[1]: "D"
+  ui[2]: "N"
+  ui[3]: "R"
+  ui[4]: "P"
   ui[5]: ""
   ui[6]: ""
   ui[7]: ""
