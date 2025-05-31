@@ -1,27 +1,24 @@
 # Tiny Tapeout project information
 project:
-  title:        "Fms transmision automatica "      # Project title
-  author:       "Allan rodas"      # Your name
-  description:  "Controlador de combios para auto "      # One line description of what your project does
-  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:    1000000     # Clock frequency in Hz (or 0 if not applicable)
+  title:        "Fms transmision automatica"      # Project title
+  author:       "Allan Rodas"                     # Your name
+  description:  "Controlador de cambios para auto" # One line description of what your project does
+  language:     "Verilog"                         # Other examples: SystemVerilog, Amaranth, VHDL
+  clock_hz:     1000000                           # Clock frequency in Hz (or 0 if not applicable)
 
-  # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+  # How many tiles your design occupies? A single tile is about 167x108 um.
+  tiles: "1x1"                                    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
 
-  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  # Your top module name must start with "tt_um_"
   top_module:  "tt_um_allanrodas74"
 
-  # List your project's source files here.
-  # Source files must be in ./src and you must list each source file separately, one per line.
-  # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
+  # List your project's source files here (must be in ./src)
   source_files:
     - "tt_user_module.v"
     - "tt_Maquina_Top.v"
     - "tt_Maquina.v"
 
-# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
-# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+# The pinout of your project
 pinout:
   ui[0]: "ena"
   ui[1]: "clk"
