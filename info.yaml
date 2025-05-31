@@ -23,7 +23,6 @@ project:
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
 pinout:
-  # Inputs: usa solo los primeros 4
   ui[0]: "D"
   ui[1]: "N"
   ui[2]: "R"
@@ -33,7 +32,6 @@ pinout:
   ui[6]: ""
   ui[7]: ""
 
-  # Outputs: salidas a LEDs
   uo[0]: "D1"
   uo[1]: "D2"
   uo[2]: "D3"
@@ -41,7 +39,8 @@ pinout:
   uo[4]: "P1"
   uo[5]: "N1"
   uo[6]: "R1"
-  uo[7]: ""  # sin usar
+  uo[7]: ""
+
 
   # Bidirectional pins
   uio[0]: ""
