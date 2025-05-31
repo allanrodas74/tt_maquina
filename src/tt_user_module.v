@@ -1,47 +1,50 @@
+// ────────────────────────────────────────────────────────────────
+// Top‐level obligatorio para Tiny Tapeout v6
+// Nombres de puertos EXACTOS requeridos por la plataforma
+// ────────────────────────────────────────────────────────────────
 module tt_um_allanrodas74 (
-    input  wire [7:0] ui_in,     // Entradas
-    output wire [7:0] uo_out,    // Salidas
-    input  wire [7:0] uio_in,    // Entradas (no usadas)
-    output wire [7:0] uio_out,   // Salidas (no usadas)
-    output wire [7:0] uio_oe,    // Output enable (no usado)
-    input  wire ena,
-    input  wire clk,
-    input  wire rst_n
+    input  wire [7:0] ui_in,     // Entradas    (ui[7:0])
+    output wire [7:0] uo_out,    // Salidas     (uo[7:0])
+    input  wire [7:0] uio_in,    // Entradas bidireccionales  (no usadas)
+    output wire [7:0] uio_out,   // Salidas  bidireccionales  (no usadas)
+    output wire [7:0] uio_oe,    // OE       bidireccionales  (0 = Hi-Z)
+    input  wire       ena,       // Enable de usuario (no usado)
+    input  wire       clk,       // Reloj global
+    input  wire       rst_n      // Reset global activo‐bajo
 );
 
-
-    // Según tu pinout:
-    // ui[3]: P
-    // ui[4]: R
-    // ui[5]: N
-    // ui[6]: D
-
+    //--------------------------------------------------------------------
+    //  Mapeo de pines según tu pinout YAML
+    //      ui[3] = P   ui[4] = R   ui[5] = N   ui[6] = D
+    //--------------------------------------------------------------------
     wire P = ui_in[3];
     wire R = ui_in[4];
     wire N = ui_in[5];
     wire D = ui_in[6];
 
-    wire reset = ~rst_n;
-
+    //--------------------------------------------------------------------
+    //  Instancia de la lógica principal
+    //--------------------------------------------------------------------
     wire [6:0] led;
 
-    // Instancia del módulo top de la máquina
-    tt_Maquina_Top top (
-        .clk(clk),
-        .reset(reset),
-        .sw({P, R, N, D}),
-        .led(led)
+    tt_Maquina_Top core (
+        .clk   (clk),
+        .reset (~rst_n),           // reset activo-alto interno
+        .sw    ({P, R, N, D}),     // {P,R,N,D}
+        .led   (led)
     );
 
-    // Asignar salida uo_out: bit 7 a 0 + leds 6:0
+    //--------------------------------------------------------------------
+    //  Salidas
+    //      uo_out[6:0] = {R1,N1,P1,D4,D3,D2,D1}
+    //      uo_out[7]   = 0 (sin usar)
+    //--------------------------------------------------------------------
     assign uo_out = {1'b0, led};
 
-    // No usamos uio_inout, se deja en alta impedancia
-    assign uio_inout = 8'bz;
+    //--------------------------------------------------------------------
+    //  Bus bidireccional no utilizado
+    //--------------------------------------------------------------------
     assign uio_out = 8'b0;
-assign uio_oe  = 8'b0;
-
+    assign uio_oe  = 8'b0;        // Hi-Z permanente
 
 endmodule
-
-
