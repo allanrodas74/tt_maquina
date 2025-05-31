@@ -5,7 +5,7 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES =  tt_user_module.v tt_Maquina_top.v tt_Maquina.v
+PROJECT_SOURCES =  tt_user_module.v tt_Maquina_Top.v tt_Maquina.v
 
 
 ifneq ($(GATES),yes)
