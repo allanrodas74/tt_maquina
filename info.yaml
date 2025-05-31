@@ -17,6 +17,7 @@ project:
     - "tt_user_module.v"
     - "tt_Maquina_Top.v"
     - "tt_Maquina.v"
+    - "tb_Maquina.v"
 
 # The pinout of your project
 pinout:
