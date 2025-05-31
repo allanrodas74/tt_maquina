@@ -3,15 +3,16 @@
 // Nombres de puertos EXACTOS requeridos por la plataforma
 // ────────────────────────────────────────────────────────────────
 module tt_um_allanrodas74 (
-    input  wire [7:0] ui_in,     // Entradas    (ui[7:0])
-    output wire [7:0] uo_out,    // Salidas     (uo[7:0])
-    input  wire [7:0] uio_in,    // Entradas bidireccionales  (no usadas)
-    output wire [7:0] uio_out,   // Salidas  bidireccionales  (no usadas)
-    output wire [7:0] uio_oe,    // OE       bidireccionales  (0 = Hi-Z)
-    input  wire       ena,       // Enable de usuario (no usado)
-    input  wire       clk,       // Reloj global
-    input  wire       rst_n      // Reset global activo‐bajo
+    input  wire [7:0] ui_in,
+    output wire [7:0] uo_out,
+    input  wire [7:0] uio_in,
+    output wire [7:0] uio_out,
+    output wire [7:0] uio_oe,
+    input  wire       ena,
+    input  wire       clk,
+    input  wire       rst_n
 );
+
 
     //--------------------------------------------------------------------
     //  Mapeo de pines según tu pinout YAML
