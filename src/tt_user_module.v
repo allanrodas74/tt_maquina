@@ -1,12 +1,15 @@
 // Interfaz obligatoria de Tiny Tapeout
 module tt_um_allanrodas74 (
-    input  wire [7:0] ui_in,
-    output wire [7:0] uo_out,
-    inout  wire [7:0] uio_inout,
-    input  wire       ena,
-    input  wire       clk,     // reloj global Tiny Tapeout
-    input  wire       rst_n    // reset global
+    input  wire [7:0] ui_in,       // Entradas digitales
+    output wire [7:0] uo_out,      // Salidas digitales
+    input  wire [7:0] uio_in,      // Entradas de I/O bidireccional
+    output wire [7:0] uio_out,     // Salidas de I/O bidireccional
+    output wire [7:0] uio_oe,      // Habilitadores de salida para I/O bidireccional
+    input  wire       ena,         // Enable del usuario
+    input  wire       clk,         // Reloj
+    input  wire       rst_n        // Reset (activo en bajo)
 );
+
     // P, R, N, D conectados a ui_in[6:3]
     wire [3:0] sw = ui_in[6:3];
 
