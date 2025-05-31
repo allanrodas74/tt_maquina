@@ -1,4 +1,4 @@
-module tt_Maquina fms(
+module tt_Maquina (
     input  wire clk,
     input  wire reset,
     input  wire D, N, R, P,       // órdenes del selector
