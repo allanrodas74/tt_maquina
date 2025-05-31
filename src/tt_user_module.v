@@ -15,5 +15,6 @@ module tt_user_module (
         .led   (led)
     );
 
-    assign io_out = {1'b0, led};  // bit-7 no usado → 0
+  assign io_out = {1'b0, led};  // io_out[7] = 0, io_out[6:0] = led[6:0]
+
 endmodule
